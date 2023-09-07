@@ -6,6 +6,8 @@ import {TrackModule} from './track/track.module';
 import {FileModule} from "./file/file.module";
 import {ServeStaticModule} from "@nestjs/serve-static";
 import * as path from "path";
+import {ArtistModule} from "./artist/artist.module";
+import {Artist} from "./artist/artist.model";
 
 
 @Module({
@@ -25,10 +27,11 @@ import * as path from "path";
             username: process.env.POSTGRES_USER,
             password: process.env.POSTGRESS_PASSWORD,
             database: process.env.POSTGRES_DB,
-            models: [Track],
+            models: [Track, Artist],
             autoLoadModels: true,
         }),
         TrackModule,
+        ArtistModule,
         FileModule
     ]
 

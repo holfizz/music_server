@@ -4,6 +4,7 @@ import {Track} from "./track.model";
 import {CreateTrackDto} from "./dto/create-track.dto";
 import {FileService, FileType} from "../file/file.service";
 import {Op} from "sequelize";
+import * as process from "process";
 
 @Injectable()
 export class TrackService {
@@ -15,7 +16,11 @@ export class TrackService {
     async create(dto: CreateTrackDto, picture: string, audio: string): Promise<Track> {
         const picturePath = this.fileService.createFile(FileType.IMAGE, picture)
         const audioPath = this.fileService.createFile(FileType.AUDIO, audio)
-        const track = await this.trackRepository.create({...dto, picture: picturePath, audio: audioPath})
+        const track = await this.trackRepository.create({
+            ...dto,
+            picture: `${process.env.DB_URL}${picturePath}`,
+            audio: `${process.env.DB_URL}${audioPath}`,
+        })
         return track
     }
 

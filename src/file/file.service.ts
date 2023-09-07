@@ -5,7 +5,8 @@ import * as uuid from 'uuid'
 
 export enum FileType {
     AUDIO = 'audio',
-    IMAGE = 'image'
+    IMAGE = 'image',
+    AVATAR = 'avatar'
 }
 
 @Injectable()
