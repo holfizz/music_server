@@ -69,5 +69,10 @@ export class TrackService {
         })
         return tracks
     }
+
+    async getTrackById(id: number) {
+        const track = await this.trackRepository.findOne({where: {id}})
+        return track;
+    }
 }
 

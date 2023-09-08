@@ -8,6 +8,12 @@ import {ServeStaticModule} from "@nestjs/serve-static";
 import * as path from "path";
 import {ArtistModule} from "./artist/artist.module";
 import {Artist} from "./artist/artist.model";
+import {User} from "./users/users.model";
+import {UsersModule} from "./users/users.module";
+import {Role} from "./roles/roles.model";
+import {RolesModule} from "./roles/roles.module";
+import {UserRoles} from "./roles/user-roles.model";
+import {UserTracks} from "./track/user-roles.module";
 
 
 @Module({
@@ -27,12 +33,14 @@ import {Artist} from "./artist/artist.model";
             username: process.env.POSTGRES_USER,
             password: process.env.POSTGRESS_PASSWORD,
             database: process.env.POSTGRES_DB,
-            models: [Track, Artist],
+            models: [Track, Artist, User, Role, UserRoles, UserTracks],
             autoLoadModels: true,
         }),
         TrackModule,
         ArtistModule,
-        FileModule
+        FileModule,
+        UsersModule,
+        RolesModule
     ]
 
 })

@@ -1,6 +1,6 @@
 import {Column, DataType, Model, Table} from "sequelize-typescript";
 
-interface TrackProps {
+export interface TrackProps {
     id: number,
     name: string
     artist: string
