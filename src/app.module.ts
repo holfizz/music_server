@@ -35,6 +35,7 @@ import {UserTracks} from "./track/user-roles.module";
             database: process.env.POSTGRES_DB,
             models: [Track, Artist, User, Role, UserRoles, UserTracks],
             autoLoadModels: true,
+            
         }),
         TrackModule,
         ArtistModule,
